@@ -307,6 +307,30 @@ except Exception as e:
 - 🛑 **Fail Fast**: Stops on first error for better debugging
 - 🎯 **Simple**: No boilerplate, direct commands
 
+## Publishing to PyPI
+
+The project uses GitHub Actions to automatically publish to PyPI. To set this up:
+
+1. **Create PyPI API Token**:
+   - Go to [PyPI Account Settings](https://pypi.org/manage/account/)
+   - Create an API token with "Entire account" scope
+   - Copy the token
+
+2. **Add GitHub Secret**:
+   - Go to your GitHub repository settings
+   - Navigate to "Secrets and variables" → "Actions"
+   - Add a new secret named `PYPI_API_TOKEN` with your PyPI token
+
+3. **Publishing**:
+   - **PyPI**: Publishes when you create a release or push a tag (e.g., `v1.0.0`)
+
+4. **Create a Release**:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+   Then create a release on GitHub with the same tag.
+
 ## License
 
 MIT License - Feel free to use and modify!
