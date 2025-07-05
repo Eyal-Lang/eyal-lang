@@ -1,0 +1,7 @@
+# Simple Variables Example
+# Shows how to create and use variables
+
+set name to "Eyal"
+set greeting to "Hello"
+say greeting name
+say nice to meet you
