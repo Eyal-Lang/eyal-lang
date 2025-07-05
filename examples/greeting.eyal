@@ -1,0 +1,8 @@
+# Greeting Example
+# Demonstrates string concatenation and multiple variables
+
+set first_name to "Alice"
+set last_name to "Smith"
+set time_of_day to "morning"
+say good time_of_day first_name
+say welcome to our program

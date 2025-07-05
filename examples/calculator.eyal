@@ -1,0 +1,9 @@
+# Calculator Example
+# Shows variables with numbers and basic calculations
+
+set a to 10
+set b to 5
+set sum to a + b
+set product to a * b
+say the sum is sum
+say the product is product
