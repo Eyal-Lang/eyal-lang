@@ -2,7 +2,7 @@
 
 import pytest
 
-from eyal_lang.parser import EyalLangParser, EyalLangInterpreter
+from eyal_lang.parser import EyalLangInterpreter, EyalLangParser
 
 
 @pytest.fixture(name="parser")

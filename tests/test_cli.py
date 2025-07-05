@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 import pytest
 
-from eyal_lang.__main__ import main, _run_single_line, _run_file_mode, _run_interactive
+from eyal_lang.__main__ import _run_file_mode, _run_single_line, main
 
 
 def test_run_single_line_success(capsys: pytest.CaptureFixture[str]) -> None:
@@ -103,7 +103,7 @@ def test_main_file_mode(capsys: pytest.CaptureFixture[str], tmp_path: Path) -> N
     # Create a test file
     test_file = tmp_path / "test.eyal"
     test_file.write_text("say hello world\n")
-    
+
     with patch("sys.argv", ["eyal-lang", "--file", str(test_file)]):
         main()
     captured = capsys.readouterr()
@@ -117,7 +117,7 @@ def test_main_file_mode_with_output(capsys: pytest.CaptureFixture[str], tmp_path
     # Create a test file
     test_file = tmp_path / "test.eyal"
     test_file.write_text("say hello world\n")
-    
+
     output_path = tmp_path / "output.py"
     with patch(
         "sys.argv",
@@ -131,7 +131,7 @@ def test_main_file_mode_with_output(capsys: pytest.CaptureFixture[str], tmp_path
     assert 'print("hello world")' in output_path.read_text()
 
 
-def test_main_mutual_exclusion_error(capsys: pytest.CaptureFixture[str]) -> None:
+def test_main_mutual_exclusion_error() -> None:
     """Test main function with mutually exclusive arguments."""
     with patch("sys.argv", ["eyal-lang", "--file", "test.eyal", "--line", "say hello"]):
         with pytest.raises(SystemExit) as excinfo:

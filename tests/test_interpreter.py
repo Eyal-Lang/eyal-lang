@@ -94,7 +94,7 @@ def test_translate_with_error_raises_exception() -> None:
 def test_translate_empty_list() -> None:
     """Test translating empty list."""
     results = translate_lines([])
-    assert results == []
+    assert not results
 
 
 def test_translate_valid_file() -> None:
@@ -167,7 +167,7 @@ def test_translate_empty_file() -> None:
 
     try:
         results = translate_file(file_path)
-        assert results == []
+        assert not results
     finally:
         Path(file_path).unlink()
 
@@ -182,9 +182,7 @@ def test_translate_file_with_only_comments() -> None:
 
     try:
         results = translate_file(file_path)
-        # Comments are filtered out by translate_file, so result should be empty
-        expected = []
-        assert results == expected
+        assert not results
     finally:
         Path(file_path).unlink()
 
@@ -199,6 +197,6 @@ def test_translate_file_with_only_empty_lines() -> None:
 
     try:
         results = translate_file(file_path)
-        assert results == []
+        assert not results
     finally:
         Path(file_path).unlink()
