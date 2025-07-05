@@ -3,8 +3,12 @@ name: CI
 on:
   push:
     branches: [main, develop]
+    tags:
+      - "v*"
   pull_request:
     branches: [main, develop]
+  release:
+    types: [published]
 
 jobs:
   pre-commit:
@@ -55,3 +59,31 @@ jobs:
         with:
           file: ./coverage.xml
           fail_ci_if_error: false
+
+  publish:
+    needs: [pre-commit, test]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'published' || startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build package
+        run: |
+          python -m build
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          twine upload dist/*
