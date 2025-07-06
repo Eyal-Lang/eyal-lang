@@ -7,7 +7,7 @@ name = "eyal-lang"
 version = "0.1.0"
 description = "A simple, rule-based DSL that interprets Eyal-style directives to Python code."
 readme = "README.md"
-authors = [{ name = "EyalLang Contributors", email = "eyal@example.com" }]
+authors = [{ name = "EyalLang Contributors", email = "www.vizel@gmail.com" }]
 license = { text = "MIT" }
 requires-python = ">=3.11"
 keywords = ["dsl", "interpreter", "language", "python", "eyal"]
@@ -24,7 +24,7 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Eyal-Lang/eyal-lang"
+Homepage = "https://eyal-lang.online"
 Repository = "https://github.com/Eyal-Lang/eyal-lang"
 Documentation = "https://github.com/Eyal-Lang/eyal-lang#readme"
 "Bug Tracker" = "https://github.com/Eyal-Lang/eyal-lang/issues"
